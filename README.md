@@ -1,2 +1,3 @@
-# webpack-course
-webpack 深入理解
+# webpack 深入理解
+
+* js的模块化
