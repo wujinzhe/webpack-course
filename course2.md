@@ -48,7 +48,7 @@ module.exports = {}
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js"
-  },
+  }
 ```
 最后执行```npm run build```就可以看到效果了，在我们的项目中多出来了个dist文件夹，里面有个main.js，这个dist就是我们构建出来的包了
 ```
@@ -139,13 +139,28 @@ console.log('hello world')
 // webpack-demo/werbpack.config.js
 const path = require('path')
 module.exports = {
+  // 基础目录
   context: path.resolve(__dirname), // 默认为webpack-demo的根目录
-  entry: './src/index.js' // entry的值为字符串 所以入口chunk的name的取值为main，默认的选项为'./src/index.js'
+  // 入口文件 entry的值为字符串 所以入口chunk的name的取值为main，默认的选项为'./src/index.js'
+  entry: './src/index.js'
+  // 输出文件
   output: {
     // 默认为在该项目中打出dist包
     path: path.resolve(__dirname, 'dist')
-    filename: '[name].js' // main.js 默认为'[name].js'
+    filename: '[name].js' // 默认为'[name].js'
   }
 }
 
 ```
+注：不要忘了在package.json中配置build属性 build值为"webpack --config webpack.config.js"
+```JSON
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+```
+
+以上代码的配置均为webpack的默认配置，也就是
+```module.exports = {} ```其实是和他们等价的
+
+好了，这一章我们讲了webpack最简单的配置（默认的零配置），应该对webpack有了一点点的了解吧，下一章我们将让webpack的打包结果在浏览器呈现出来
